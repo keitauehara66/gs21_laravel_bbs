@@ -19,6 +19,9 @@
                 投稿者：{{ $post->user->name }}
             </h5>
             <p class="card-text">{{ $post->content }}</p>
+            @if(isset($post->image))
+                <img src="{{ asset('storage/image/'.$post->image) }}">
+            @endif
         </div>
     </div>
 

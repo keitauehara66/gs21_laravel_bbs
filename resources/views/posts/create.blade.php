@@ -21,6 +21,7 @@
                 </ul>
             </div>
         @endif
+
             <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
@@ -39,12 +40,11 @@
                     </select>
                 </div>
 
-                <!-- <form>
+                <!-- ファイル投稿用フォーム -->
                     <div class="form-group">
                         <label for="exampleFormControlFile1">image file</label>
                         <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
                     </div>
-                </form> -->
 
                 <div class="mb-3">
                     <label for="content">Content</label>

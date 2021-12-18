@@ -175,6 +175,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // 画像サイズ圧縮用に追加したパッケージ：interventionImage
+        Intervention\Image\ImageServiceProvider::class,
+
     ],
 
     /*
@@ -225,6 +228,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        // 画像サイズ圧縮用に追加したパッケージ：interventionImage
+        'InterventionImage' => Intervention\Image\Facades\Image::class,
 
     ],
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Post;
+use Illuminate\Support\Str;
+use \InterventionImage;
 
 class PostController extends Controller
 {
@@ -43,25 +45,31 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        // if($request->file('image')->isValid()){
-        //     $post = new Post;
-        //     $post->user_id = $request->user_id;
-        //     $post->category_id = $request->category_id;
-        //     $post->content = $request->content;
-        //     $post->title = $request->title;
-
-        //     $filename = $request->file('image')->store('public/image');
-
-        //     $post->image = basename($filename);
-
-        //     $post->save();
-        // } else {
+        if(is_null($request->image)){
             $post = new Post;
-            $input = $request->only($post->getFillable());
-    
-            $post = $post->create($input);
-        // }
+            $post->user_id = $request->user_id;
+            $post->category_id = $request->category_id;
+            $post->title = $request->title;
+            $post->content = $request->content;
 
+            $post->save();
+
+        }elseif($request->file('image')->isValid()){
+            $post = new Post;
+            $post->user_id = $request->user_id;
+            $post->category_id = $request->category_id;
+            $post->title = $request->title;
+            $post->content = $request->content;
+
+            $filename = $request->file('image')->store('public/image');
+            $file = $request->file('image');
+            //アスペクト比を維持、画像サイズを横幅360pxにして保存する。
+            InterventionImage::make($file)->resize(360, null, function ($constraint) {$constraint->aspectRatio();})->save(storage_path('app/'.$filename));
+
+            $post->image = basename($filename);
+
+            $post->save();
+        }
         return redirect('/');
     }
 
