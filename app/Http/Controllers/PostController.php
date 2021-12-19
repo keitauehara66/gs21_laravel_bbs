@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Post;
+use App\Category;
 use Illuminate\Support\Str;
+// 写真のリサイズのために入れたが、動画には使えず、むしろエラーになるので使いづらい
 use \InterventionImage;
 
 class PostController extends Controller
@@ -33,7 +35,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create', [
+        $category = new Category;
+        $categories = $category->getLists()->prepend('選択', '');
+        
+        return view('posts.create', ['categories' => $categories
         ]);
     }
 
@@ -64,7 +69,7 @@ class PostController extends Controller
             $filename = $request->file('image')->store('public/image');
             $file = $request->file('image');
             //アスペクト比を維持、画像サイズを横幅360pxにして保存する。
-            InterventionImage::make($file)->resize(360, null, function ($constraint) {$constraint->aspectRatio();})->save(storage_path('app/'.$filename));
+            // InterventionImage::make($file)->resize(360, null, function ($constraint) {$constraint->aspectRatio();})->save(storage_path('app/'.$filename));
 
             $post->image = basename($filename);
 

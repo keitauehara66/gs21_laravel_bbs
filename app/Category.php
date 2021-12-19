@@ -20,4 +20,9 @@ class Category extends Model
         return $this->hasMany(\App\Post::class, 'category_id', 'id');
     }
 
+    public function getLists(){
+        $categories = Category::orderBy('id','asc')->pluck('category_name', 'id');
+        return $categories;
+    }
+
 }

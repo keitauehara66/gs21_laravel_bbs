@@ -20,7 +20,7 @@
             </h5>
             <p class="card-text">{{ $post->content }}</p>
             @if(isset($post->image))
-                <img src="{{ asset('storage/image/'.$post->image) }}">
+                <iframe src="{{ asset('storage/image/'.$post->image) }}" frameborder="0" allowfullscreen></iframe>
             @endif
         </div>
     </div>

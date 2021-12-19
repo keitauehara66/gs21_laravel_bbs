@@ -7,6 +7,11 @@ use App\Category;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->category = new Category();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -22,9 +27,10 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $categories = $this->category->get();
+        return view('posts.create', compact('categories'));
     }
 
     /**

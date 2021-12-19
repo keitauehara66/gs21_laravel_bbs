@@ -32,18 +32,18 @@
 
                 <div class="mb-3">
                     <label for="exampleFormControlSelect1" class="form-label">category</label>
-                    <select class="form-control" id="exampleFormControlSelect1" name="category_id">
-                        <option selected="">選択する</option>
-                        <option value="1">book</option>
-                        <option value="2">cafe</option>
-                        <option value="3">travel</option>
+                    <select class="form-control {{ $errors->has('category_id') ? 'is-invalid' : '' }}" id="exampleFormControlSelect1" value="{{ old('category_id') }}" name="category_id">
+                        @foreach($categories as $id => $category_name)
+                            <option value="" hidden>カテゴリを選択</option>
+                            <option value="{{ $id }}">{{ $category_name }}</option>
+                        @endforeach
                     </select>
                 </div>
 
                 <!-- ファイル投稿用フォーム -->
                     <div class="form-group">
                         <label for="exampleFormControlFile1">image file</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image" accept="image/*, video/*">
                     </div>
 
                 <div class="mb-3">
