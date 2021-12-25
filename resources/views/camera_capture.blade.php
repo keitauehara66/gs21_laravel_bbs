@@ -17,8 +17,8 @@
     <!-- ① スマホのカメラを起動する部分 -->
     <div class="p-3" v-if="isStatusReady">
         <label class="btn btn-info">
-            &#x1F4F8; 写真を撮ってアップロードする
-            <input type="file" class="d-none" accept="image/*" capture="camera" @change="onCaptureImage">
+            &#x1F4F8; 動画を撮ってアップロードする
+            <input type="file" class="d-none" accept="video/*" capture="camera" @change="onCaptureImage">
         </label>
     </div>
 

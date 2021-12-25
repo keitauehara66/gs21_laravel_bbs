@@ -41,10 +41,10 @@
                 </div>
 
                 <!-- ファイル投稿用フォーム -->
-                    <div class="form-group">
-                        <label for="exampleFormControlFile1">image file</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image" accept="image/*, video/*">
-                    </div>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">image file</label>
+                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image" accept="image/*, video/*">
+                </div>
 
                 <div class="mb-3">
                     <label for="content">Content</label>
