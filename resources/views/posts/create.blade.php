@@ -43,6 +43,8 @@
                 <!-- ファイル投稿用フォーム -->
                 <div class="form-group">
                     <label for="exampleFormControlFile1">image file</label>
+                    <input type="file" class="video-capture" accept="video/*" capture="camera" @change="onCaptureImage">
+                    <input type="file" class="image-capture" accept="image/*" capture="camera" @change="onCaptureImage">
                     <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image" accept="image/*, video/*">
                 </div>
 
