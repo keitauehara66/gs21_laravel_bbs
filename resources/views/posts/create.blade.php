@@ -40,17 +40,15 @@
                     </select>
                 </div>
 
-                <!-- ファイル投稿用フォーム -->
-                <div class="form-group">
-                    <label for="exampleFormControlFile1">image file</label>
-                    <input type="file" class="video-capture" accept="video/*" capture="camera" @change="onCaptureImage">
-                    <input type="file" class="image-capture" accept="image/*" capture="camera" @change="onCaptureImage">
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image" accept="image/*, video/*">
-                </div>
-
                 <div class="mb-3">
                     <label for="content">Content</label>
                     <textarea class="form-control" rows="5" id="content" name="content"></textarea>
+                </div>
+
+                <!-- ファイル投稿用フォーム -->
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">image file</label>
+                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image" accept="image/*, video/*">
                 </div>
 
                 <input type="hidden" name="user_id" value="{{ Auth::id() }}">

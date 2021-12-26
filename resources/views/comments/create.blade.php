@@ -21,7 +21,7 @@
                 </ul>
             </div>
         @endif
-            <form action="{{ route('comments.store') }}" method="POST">
+            <form action="{{ route('comments.store') }}" method="POST"　enctype="multipart/form-data">
                 {{ csrf_field() }}
 
                 <div class="mb-3">
@@ -29,10 +29,16 @@
                     <textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
                 </div>
 
+                <!-- ファイル投稿用フォーム -->
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">image file</label>
+                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image" accept="image/*, video/*">
+                </div>
+
                 <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                 <input type="hidden" name="post_id" value="{{ $post_id }}">
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">投稿</button>
             </form>
         </div>
     </div>

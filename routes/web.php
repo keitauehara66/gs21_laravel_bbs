@@ -28,7 +28,3 @@ Route::resource('/categories', 'CategoryController');
 Route::resource('/comments', 'CommentController')->middleware('auth');
 
 Route::post('create', [\App\Http\Controllers\PostController::class, 'store']);
-
-// Camera Capture
-Route::get('camera_capture', [\App\Http\Controllers\CameraCaptureController::class, 'create']);
-Route::post('camera_capture', [\App\Http\Controllers\CameraCaptureController::class, 'store']);

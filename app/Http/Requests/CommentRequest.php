@@ -25,6 +25,7 @@ class CommentRequest extends FormRequest
     {
         return [
             'comment' => 'required',
+            'image' => 'nullable|file',
             'user_id' => 'required|numeric',
             'post_id' => 'required|numeric',
         ];

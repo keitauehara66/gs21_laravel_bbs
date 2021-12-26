@@ -42,4 +42,9 @@ class User extends Authenticatable
         return $this->hasMany(\App\Post::class, 'user_id', 'id');
     }
 
+    public function nices(){
+        // 1人のユーザーには複数のいいねが紐づく
+        return $this->hasMany(\App\Nice::class, 'user_id', 'id');
+    }
+
 }

@@ -32,6 +32,9 @@
             <div class="card">
                 <div class="card-body">
                     <p class="card-text">{{ $comment->comment }}</p>
+                    @if(isset($comment->image))
+                        <iframe src="{{ asset('storage/image/'.$comment->image) }}" frameborder="0" allowfullscreen></iframe>
+                    @endif
                     <p class="card-text">
                         投稿者：
                         <a href="{{ route('users.show', $comment->user->id) }}">

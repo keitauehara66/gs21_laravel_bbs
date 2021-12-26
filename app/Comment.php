@@ -20,4 +20,8 @@ class Comment extends Model
         return $this->belongsTo(\App\User::class, 'user_id');
     }
 
+    public function nices() {
+        // 1つのコメントに複数のいいねがつく
+        return $this->hasMany(\App\Comment::class, 'comment_id', 'id');
+    }
 }
