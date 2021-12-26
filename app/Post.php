@@ -30,4 +30,8 @@ class Post extends Model
         return $this->hasMany(\App\Comment::class, 'post_id', 'id');
     }
 
+    public function bookmarks(){
+        // post_userの中間テーブル
+        return $this->belongsToMany('App\User')->withTimestamps();
+    }
 }

@@ -27,21 +27,32 @@
     @foreach($posts as $post)
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">{{ $post->title }}</h5>
-                <h5 class="card-title">
+                <p class="card-title">{{ $post->title }}</p>
+                <p class="card-title">
                     カテゴリー：
                     <a href="{{ route('categories.show', $post->category_id) }}">
                         {{ $post->category->category_name }}
                     </a>
-                </h5>
-                <h5 class="card-title">
+                </p>
+                <p class="card-title">
                     投稿者：
                     <a href="{{ route('users.show', $post->user_id) }}">
                         {{ $post->user->name }}
                     </a>                    
-                </h5>
+                </p>
                 <p class="card-text">{{ $post->content }}</p>
-                <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">詳細</a>
+                <a href="{{ route('posts.show', $post->id) }}" class="fas btn btn-primary btn-sm">詳細</a>
+                @if($post->bookmarks()->where('user_id', Auth::id())->exists())
+                    <form action="{{ route('unbookmarks', $post) }}" method="POST">
+                        @csrf
+                        <input type="submit" value="&#xf005;お気に入り解除：{{ $post->bookmarks()->count() }}"  class="fas btn btn-light btn-sm">
+                    </form>
+                @else
+                    <form action="{{ route('bookmarks', $post) }}" method="POST">
+                        @csrf
+                        <input type="submit" value="&#xf005;お気に入り登録：{{ $post->bookmarks()->count() }}" class="fas btn btn-warning btn-sm">
+                    </form>
+                @endif
             </div>
         </div>
     @endforeach

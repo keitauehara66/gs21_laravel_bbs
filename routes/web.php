@@ -28,3 +28,6 @@ Route::resource('/categories', 'CategoryController');
 Route::resource('/comments', 'CommentController')->middleware('auth');
 
 Route::post('create', [\App\Http\Controllers\PostController::class, 'store']);
+
+Route::post('posts/{post}/bookmarks', 'BookmarkController@store')->name('bookmarks');
+Route::post('posts/{post}/unbookmarks', 'BookmarkController@destroy')->name('unbookmarks');
